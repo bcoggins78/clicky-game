@@ -3,6 +3,9 @@ import './App.css';
 import PictureCard from './components/PictureCard'
 import doctors from "./pictures.json"
 import Wrapper from "./components/Wrapper"
+import NavBar from "./components/NavBar"
+import Footer from "./components/Footer"
+
 
 class App extends Component {
 
@@ -13,6 +16,7 @@ class App extends Component {
   render() {
     return(
       <div>
+        <NavBar></NavBar>
         <Wrapper>
         {this.state.doctors.map(doctor => (<PictureCard 
           id={doctor.id}
@@ -23,6 +27,7 @@ class App extends Component {
           clicked={doctor.clicked}
           />))}
         </Wrapper>
+        <Footer></Footer>
       </div>
     )
   }
