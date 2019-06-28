@@ -9,12 +9,12 @@ function NavBar(props) {
                 
                 <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div className="navbar-nav mx-auto">
-                        <span className="nav-item nav-link mx-auto">You Guessed Correctly!</span>
+                        <span className="nav-item nav-link mx-auto">{props.status}</span>
                         
                         
                     </div>
                     <div className="navbar-nav mx-right">
-                    <span className="nav-item nav-link">Score: 0 | Top Score: 12</span>
+                    <span className="nav-item nav-link">Score: {props.score} | Top Score: {props.totalScore}</span>
                     </div>
                 </div>
             </nav>
