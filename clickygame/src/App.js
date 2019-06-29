@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
-import PictureCard from './components/PictureCard'
 import doctors from "./pictures.json"
-import Wrapper from "./components/Wrapper"
 import NavBar from "./components/NavBar"
+import Instructions from "./components/Instructions"
+import Wrapper from "./components/Wrapper"
+import PictureCard from './components/PictureCard'
 import Footer from "./components/Footer"
 
+// Function used to shuffle the Doctors array
 function shuffleArray(array) {
   let i = array.length - 1;
   for (; i > 0; i--) {
@@ -18,58 +20,63 @@ function shuffleArray(array) {
 }
 
 class App extends Component {
-
+// Setting the state
   state = {
     doctors,
     score: 0,
     totalScore: 0,
-    status: "",
+    status: "Click an image to begin!",
     isClicked: []
   };
 
+  // Runs the RandomDoctors array when component loads
   componentDidMount = () => this.randomizeDoctors()
 
+  // Uses the shuffle aray to randomize the array of doctor objects
   randomizeDoctors = () => {
     const randomize = shuffleArray(this.state.doctors)
     this.setState({ doctors: randomize })
   }
 
+  // Function that runs the logic of the game
   incrementScore = id => {
     let score = this.state.score
     let totalScore = this.state.totalScore
+    // Checks if the Doctor's id is in the isClicked array
     if (this.state.isClicked.includes(id)) {
-      this.setState({ status: "Oops, this has already been clicked!" })
-      this.setState({ score: 0 })
-      this.setState({ isClicked: [] })
-      this.randomizeDoctors()
+      this.setState({ status: "EXTERMINATE!!!" }) // Message when an already clicked image is selected
+      this.setState({ score: 0 }) // Sets the score to 0
+      this.setState({ isClicked: [] }) // Empties isClicked array
+      this.randomizeDoctors() // Runs the function to randomize the pictures
     } else {
-      this.setState({ status: "Good Guess!"})
-      this.setState({ isClicked: [...this.state.isClicked, id] })
-      this.setState({ score: score + 1 })
-      if (score >= totalScore ) {
-        this.setState({ totalScore: totalScore + 1 })
+      this.setState({ status: "Good Guess Companion!"}) // Message when an un-clicked picture is selected
+      this.setState({ isClicked: [...this.state.isClicked, id] }) // Adds the id of selected picture to the isClicked array
+      this.setState({ score: score + 1 }) // Increments score by 1
+      if (score >= totalScore ) { // Checks if score is larger than or equal to total score
+        this.setState({ totalScore: totalScore + 1 }) // If condition is true, total score increments by 1
       } 
-      if (totalScore === 15) {
-        this.setState({ status: "Good Memory!"})
-        this.setState({ totalScore: 0 })
+      if (totalScore === 15) {  // Checks the score if all pictures have been clicked
+        this.setState({ status: "You must be a Time Lord!"})  // Displays this message if condition is true
+        this.setState({ totalScore: 0 }) // Both the totalScore and score reset to 0
         this.setState({ score: 0 })
       }
-      this.randomizeDoctors()
+      this.randomizeDoctors() // Pictures randomized
     }
-
   }
   
   render() {
     return(
       <div>
+        {/* NavBar component sending props for status, score, and totalScore */}
         <NavBar
           status={this.state.status}
           score={this.state.score}
           totalScore={this.state.totalScore}>
-          </NavBar>
+        </NavBar>
+        <Instructions />
         <Wrapper>
+          {/* Map function that loops the PictureCard component and passes props from the doctors array */}
         {this.state.doctors.map(doctor => (<PictureCard
-
           incrementScore={this.incrementScore}
           id={doctor.id}
           key={doctor.id}
@@ -79,18 +86,10 @@ class App extends Component {
           clicked={doctor.clicked}
           />))}
         </Wrapper>
-        <Footer></Footer>
+        <Footer />
       </div>
     )
   }
 }
-
-// function App() {
-//   return (
-//     <div className="App">
-      
-//     </div>
-//   );
-// }
 
 export default App;
