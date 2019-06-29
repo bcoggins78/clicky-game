@@ -2,7 +2,7 @@
 
 ### UNC Coding Bootcamp Week 19 Homework Project
 
-[Link to Deployed App](https://arcane-garden-12409.herokuapp.com)
+[Link to Deployed App](https://bcoggins78.github.io/clicky-game/)
 
 #### Instructions
 
@@ -17,5 +17,5 @@ The Doctor Who Clicky game is a front-end app that uses the React framework. The
 * JavaScript
 * HTML5
 
-![screenshot1](https://github.com/bcoggins78/clicky-game/blob/master/clickygame/public/screenshot1.jpg)
-![screenshot2](https://github.com/bcoggins78/clicky-game/blob/master/clickygame/public/screenshot2.jpg)
+![screenshot1](https://github.com/bcoggins78/clicky-game/blob/master/public/screenshot1.jpg)
+![screenshot2](https://github.com/bcoggins78/clicky-game/blob/master/public/screenshot2.jpg)
