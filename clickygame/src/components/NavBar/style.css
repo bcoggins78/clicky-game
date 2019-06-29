@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css?family=Rubik+Mono+One&display=swap');
+/* font-family: 'Rubik Mono One', sans-serif; */
+
+.navbar {
+    background-color: black;
+    height: 120px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    font-family: 'Rubik Mono One', sans-serif;
+}
+
+.status, .score{
+    color: white;
+    text-shadow: -1px -1px 0 rgb(95, 141, 194), 1px -1px 0 rgb(95, 141, 194) , -1px 1px 0 rgb(95, 141, 194) , 1px 1px 0 rgb(95, 141, 194);
+}
+
+.status {
+    margin-left: 200px;
+}
